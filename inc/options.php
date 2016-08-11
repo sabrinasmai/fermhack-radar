@@ -43,7 +43,7 @@
     			'theme_options',
     			'options_page_section'
     		);
-        /* */
+        /* This piece of code sets the options for the user to select with regards to background color*/
         		function select_field_render() {
         			$options = get_option( 'options_settings' );
         			?>
@@ -54,7 +54,7 @@
         			</select>
         		<?php
         		}
-        	/* */
+        	/* This piece of code sets the options for the user to select with regards to colours*/
         		function select_field_render_2() {
         			$options = get_option( 'options_settings' );
         			?>
@@ -65,14 +65,14 @@
         			</select>
         		<?php
         		}
-        	/* */
+        	/* This piece of code sets the options for the user to select with regards to size of text */
         		function select_field_render_3() {
         			$options = get_option( 'options_settings' );
         			?>
         			<select name="options_settings[select_field_3]">
         				<option value="1" <?php if (isset($options['select_field_3'])) selected( $options['select_field_3'], 1 ); ?>>TINY</option>
         				<option value="2" <?php if (isset($options['select_field_3'])) selected( $options['select_field_3'], 2 ); ?>>NORMAL</option>
-        				<option value="3" <?php if (isset($options['select_field_3'])) selected( $options['select_field_3'], 3 ); ?>>HUGE</option>		
+        				<option value="3" <?php if (isset($options['select_field_3'])) selected( $options['select_field_3'], 3 ); ?>>HUGE</option>
         			</select>
         		<?php
         		}
