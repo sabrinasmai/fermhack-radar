@@ -12,11 +12,36 @@
 
 		register_setting( 'theme_options', 'options_settings' );
 
-		add_settings_section( 'options_page_section',__( 'Your section description', 'codediva' ), 'options_page_section_callback', 'theme_options');
+		add_settings_section( 'options_page_section',__( 'Testing out an options page, hope this works!', 'codediva' ), 'options_page_section_callback', 'theme_options');
 
 		function options_page_section_callback()
 		{
-			echo __( 'Select the changes you want to make and click save' );
+			echo __( 'Please select the customization options then hit the Save Changes button!' );
 		}
+
+    /*This piece of code adds a field in my options page for #page and #background, referenced from: https://codex.wordpress.org/Function_Reference/add_settings_field*/
+    		add_settings_field(
+    			'select_field',
+    			__( 'Switch Background Color '),
+    			'select_field_render',
+    			'theme_options',
+    			'options_page_section'
+    		);
+
+    		add_settings_field(
+    			'select_field_2',
+    			__( 'Switch Text Color'),
+    			'select_field_render_2',
+    			'theme_options',
+    			'options_page_section'
+    		);
+
+    		add_settings_field(
+    			'select_field_3',
+    			__( 'Switch Text Size '),
+    			'select_field_render_3',
+    			'theme_options',
+    			'options_page_section'
+    		);
 
 	?>
