@@ -85,6 +85,146 @@ add_action( 'after_setup_theme', 'sabrina_theme_setup' );
  *
  * @global int $content_width
  */
+
+ //referenced from https://codex.wordpress.org/Creating_Options_Pages
+ //This piece of code adds posts to the custom post type. This is found in queries if it's in wordpress...
+function show_cpt_in_categories ($query)
+{
+	if( $query->is_category() && $query->is_main_query() )
+	{
+		$query->set( 'post_type', array ('locations'));
+	}
+}
+add_action('pre_get_posts', 'show_cpt_in_categories');
+
+// This piece of code runs options file, which is found in inc folder
+require get_template_directory() . '/inc/options.php';
+
+//This piece of code adds a function where styling is applied
+function apply_options_page($value)
+{
+	$value = get_option('options_settings');
+
+	//This piece of code applies values for First Option
+	if($value['select_field'] == 1)
+	{
+	?>
+		<style>
+			#page
+			{
+				 background-color: #25AAE1;
+			}
+		</style>
+	<?php
+	}
+	elseif($value['select_field'] == 2)
+	{
+	?>
+		<style>
+			#page
+			{
+				 background-color: #8B008B;
+			}
+		</style>
+	<?php
+	}
+	elseif($value['select_field'] == 3)
+	{
+	?>
+		<style>
+			#page
+			{
+				 background-color: #A9A9A9;
+			}
+		</style>
+	<?php
+	}
+
+	//This piece of code applies values for Second Option
+	if($value['select_field_2'] == 1)
+	{
+	?>
+
+		<style>
+			#page
+			{
+				 color: #000000;
+			}
+		</style>
+
+	<?php
+	}
+	elseif($value['select_field_2'] == 2)
+	{
+	?>
+		<style>
+			#page
+			{
+				 color: #ffffff;
+			}
+		</style>
+	<?php
+	}
+	elseif($value['select_field_2'] == 3)
+	{
+	?>
+		<style>
+			#page
+			{
+				 color: #d2b48c;
+			}
+		</style>
+	<?php
+	}
+
+	// This piece of code applies values for Third Option
+	if($value['select_field_3'] == 1)
+	{
+	?>
+
+		<style>
+			#page
+			{
+				 font-size: 1em;
+			}
+		</style>
+
+	<?php
+	}
+	elseif($value['select_field_3'] == 2)
+	{
+	?>
+		<style>
+			#page
+			{
+				 font-size: 1.5em;
+			}
+		</style>
+	<?php
+	}
+	elseif($value['select_field_3'] == 3)
+	{
+	?>
+		<style>
+			#page
+			{
+				 font-size: 2em;
+			}
+		</style>
+	<?php
+	}
+}
+add_action('wp_head', 'apply_options_page');
+// This is now the end of the option page's styles being applied...
+
+
+
+
+
+
+
+
+
 function sabrinas_theme_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'sabrina_theme_content_width', 640 );
 }
