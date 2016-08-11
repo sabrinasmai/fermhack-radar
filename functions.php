@@ -7,7 +7,7 @@
  * @package sabrinas-theme
  */
 
-if ( ! function_exists( 'sabrinas_theme_setup' ) ) :
+if ( ! function_exists( 'sabrina_theme_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -24,7 +24,6 @@ function sabrinas_theme_setup() {
 	 */
 	load_theme_textdomain( 'sabrina-theme', get_template_directory() . '/languages' );
 
-	// Add default posts and comments RSS feed links to head.
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
@@ -45,7 +44,7 @@ function sabrinas_theme_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'sabrinas-theme' ),
+		'primary' => esc_html__( 'Primary', 'sabrina-theme' ),
 	) );
 
 	/*
@@ -61,13 +60,23 @@ function sabrinas_theme_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'sabrinas_theme_custom_background_args', array(
+	//Referenced from http://codex.wordpress.org/Post_Formats
+	add_theme_support( 'post-formats', array(
+		'aside',
+		'image',
+		'video',
+		'quote',
+		'link',
+	) );
+
+	// Set up the WordPress core custom background feature.
+	add_theme_support( 'custom-background', apply_filters( 'clickture_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
 }
 endif;
-add_action( 'after_setup_theme', 'sabrinas_theme_setup' );
+add_action( 'after_setup_theme', 'sabrina_theme_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -77,9 +86,9 @@ add_action( 'after_setup_theme', 'sabrinas_theme_setup' );
  * @global int $content_width
  */
 function sabrinas_theme_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'sabrinas_theme_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'sabrina_theme_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'sabrinas_theme_content_width', 0 );
+add_action( 'after_setup_theme', 'sabrina_theme_content_width', 0 );
 
 /**
  * Register widget area.
@@ -88,26 +97,26 @@ add_action( 'after_setup_theme', 'sabrinas_theme_content_width', 0 );
  */
 function sabrinas_theme_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'sabrinas-theme' ),
+		'name'          => esc_html__( 'Sidebar', 'sabrina-theme' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'sabrinas-theme' ),
+		'description'   => esc_html__( 'Add widgets here.', 'sabrina-theme' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'sabrinas_theme_widgets_init' );
+add_action( 'widgets_init', 'sabrina_theme_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function sabrinas_theme_scripts() {
-	wp_enqueue_style( 'sabrinas-theme-style', get_stylesheet_uri() );
+function sabrina_theme_scripts() {
+	wp_enqueue_style( 'sabrina-theme-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'sabrinas-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'sabrina-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'sabrinas-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'sabrina-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
