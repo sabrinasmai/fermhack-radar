@@ -43,5 +43,38 @@
     			'theme_options',
     			'options_page_section'
     		);
-
+        /* */
+        		function select_field_render() {
+        			$options = get_option( 'options_settings' );
+        			?>
+        			<select name="options_settings[select_field]">
+        				<option value="1" <?php if (isset($options['select_field'])) selected( $options['select_field'], 1 ); ?>>RED</option>
+        				<option value="2" <?php if (isset($options['select_field'])) selected( $options['select_field'], 2 ); ?>>PURPLE</option>
+        				<option value="3" <?php if (isset($options['select_field'])) selected( $options['select_field'], 3 ); ?>>GREY</option>
+        			</select>
+        		<?php
+        		}
+        	/* */
+        		function select_field_render_2() {
+        			$options = get_option( 'options_settings' );
+        			?>
+        			<select name="options_settings[select_field_2]">
+          				<option value="1" <?php if (isset($options['select_field_2'])) selected( $options['select_field_2'], 1 ); ?>>BLACK</option>
+        				<option value="2" <?php if (isset($options['select_field_2'])) selected( $options['select_field_2'], 2 ); ?>>WHITE</option>
+        				<option value="3" <?php if (isset($options['select_field_2'])) selected( $options['select_field_2'], 3 ); ?>>TAN</option>
+        			</select>
+        		<?php
+        		}
+        	/* */
+        		function select_field_render_3() {
+        			$options = get_option( 'options_settings' );
+        			?>
+        			<select name="options_settings[select_field_3]">
+        				<option value="1" <?php if (isset($options['select_field_3'])) selected( $options['select_field_3'], 1 ); ?>>TINY</option>
+        				<option value="2" <?php if (isset($options['select_field_3'])) selected( $options['select_field_3'], 2 ); ?>>NORMAL</option>
+        				<option value="3" <?php if (isset($options['select_field_3'])) selected( $options['select_field_3'], 3 ); ?>>HUGE</option>		
+        			</select>
+        		<?php
+        		}
+        	/* */
 	?>

@@ -112,7 +112,7 @@ function apply_options_page($value)
 		<style>
 			#page
 			{
-				 background-color: #25AAE1;
+				 background-color: #ff0000;
 			}
 		</style>
 	<?php
