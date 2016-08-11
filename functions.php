@@ -225,7 +225,7 @@ add_action('wp_head', 'apply_options_page');
 
 
 
-function sabrinas_theme_content_width() {
+function sabrina_theme_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'sabrina_theme_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'sabrina_theme_content_width', 0 );
@@ -235,7 +235,7 @@ add_action( 'after_setup_theme', 'sabrina_theme_content_width', 0 );
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function sabrinas_theme_widgets_init() {
+function sabrina_theme_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'sabrina-theme' ),
 		'id'            => 'sidebar-1',
@@ -262,7 +262,7 @@ function sabrina_theme_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'sabrinas_theme_scripts' );
+add_action( 'wp_enqueue_scripts', 'sabrina_theme_scripts' );
 
 /**
  * Implement the Custom Header feature.
