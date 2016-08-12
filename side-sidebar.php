@@ -12,4 +12,9 @@
                 <aside id="tag_cloud" class="widget">
 					<div class="widget-title"><?php  _e( 'Tags', 'fluffy' ); ?></div>
 					<ul>
-				
+						<?php  wp_tag_cloud(); ?>
+					</ul>
+				</aside>
+			<?php  endif;
+      ?> //this piece of code is where the sidebar end in the widget area
+		</div> 
