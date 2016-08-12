@@ -77,4 +77,20 @@
         		<?php
         		}
         	/* */
+          function my_theme_options_page()
+		{
+			?>
+			<form action="options.php" method="post">
+				<h2>This should be the theme page, hope this works</h2>
+				<?php
+				settings_fields( 'theme_options' );
+				do_settings_sections( 'theme_options' );
+				submit_button();
+				?>
+			</form>
+			<?php
+		}
+
+	}
+	add_action( 'admin_init', 'settings_init' );
 	?>
