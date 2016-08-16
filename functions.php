@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package sabrinas-theme
+ * @package sabrina-theme
  */
 
 if ( ! function_exists( 'sabrina_theme_setup' ) ) :
@@ -15,7 +15,7 @@ if ( ! function_exists( 'sabrina_theme_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function sabrinas_theme_setup() {
+function sabrina_theme_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
