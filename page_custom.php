@@ -40,3 +40,23 @@
   				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
   			</div>
   	<?php
+    $counter = 0;
+
+		endif;
+
+		$counter ++;
+
+		endwhile;
+
+		endif;
+	?>
+		<div id="navigate_btn"><?php
+			echo get_next_posts_link( 'Older Entries', $my_query->max_num_pages );
+			echo get_previous_posts_link( 'Newer Entries' );
+	?>
+		</div>
+
+	</div>
+
+	<div id="customfooter"> <?php get_footer(); ?> </div>
+	</div>
