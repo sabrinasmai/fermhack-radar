@@ -23,3 +23,20 @@
 		?>
 
 	<?php
+  if ($my_query->have_posts()) : while ($my_query->have_posts()) : $my_query->the_post();
+
+
+          if($counter == 1) :
+
+  	?>		<div class="gridleft">
+  				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+  			</div>
+  	<?php
+
+          elseif($counter == $grid) :
+
+  	?>
+  			<div class="gridright">
+  				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+  			</div>
+  	<?php
