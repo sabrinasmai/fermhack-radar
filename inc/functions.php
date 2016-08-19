@@ -1,8 +1,6 @@
 <?php
 /**
- * sabrina-theme functions and definitions.
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ * sabrina-theme functions and definitions
  *
  * @package sabrina-theme
  */
@@ -19,8 +17,8 @@ function sabrina_theme_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on sabrinas-theme, use a find and replace
-	 * to change 'sabrina-theme' to the name of your theme in all the template files.
+	 * If you're building a theme based on sabrina-theme, use a find and replace
+	 * to change 'sabrina-theme' to the name of your theme in all the template files
 	 */
 	load_theme_textdomain( 'sabrina-theme', get_template_directory() . '/languages' );
 
@@ -38,13 +36,13 @@ function sabrina_theme_setup() {
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
-	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'sabrina-theme' ),
+		'primary' => esc_html__( 'Primary Menu', 'sabrina-theme' ),
 	) );
 
 	/*
@@ -59,8 +57,10 @@ function sabrina_theme_setup() {
 		'caption',
 	) );
 
-	// Set up the WordPress core custom background feature.
-	//Referenced from http://codex.wordpress.org/Post_Formats
+	/*
+	 * Enable support for Post Formats.
+	 * See http://codex.wordpress.org/Post_Formats
+	 */
 	add_theme_support( 'post-formats', array(
 		'aside',
 		'image',
@@ -70,12 +70,12 @@ function sabrina_theme_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'clickture_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'sabrina_theme_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
 }
-endif;
+endif; // sabrina_theme_setup
 add_action( 'after_setup_theme', 'sabrina_theme_setup' );
 
 /**
@@ -85,9 +85,9 @@ add_action( 'after_setup_theme', 'sabrina_theme_setup' );
  *
  * @global int $content_width
  */
+ 
 
- //referenced from https://codex.wordpress.org/Creating_Options_Pages
- //This piece of code adds posts to the custom post type. This is found in queries if it's in wordpress...
+// Adds posts in the custom post type: locations to appear in queries if they use the regular WP category taxonomy 
 function show_cpt_in_categories ($query)
 {
 	if( $query->is_category() && $query->is_main_query() )
@@ -97,10 +97,10 @@ function show_cpt_in_categories ($query)
 }
 add_action('pre_get_posts', 'show_cpt_in_categories');
 
-// This piece of code runs options file, which is found in inc folder
+// loads options.php located in the theme's inc forlder 
 require get_template_directory() . '/inc/options.php';
 
-//This piece of code adds a function where styling is applied
+//Start Apply Styles from Options Page
 function apply_options_page($value)
 {
 	$value = get_option('options_settings');
@@ -215,12 +215,7 @@ function apply_options_page($value)
 	}
 }
 add_action('wp_head', 'apply_options_page');
-// This is now the end of the option page's styles being applied...
-
-
-
-
-
+// End Apply Styles from Options Page
 
 
 
@@ -233,15 +228,15 @@ add_action( 'after_setup_theme', 'sabrina_theme_content_width', 0 );
 /**
  * Register widget area.
  *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
 function sabrina_theme_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'sabrina-theme' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'sabrina-theme' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
+		'description'   => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
@@ -254,9 +249,9 @@ add_action( 'widgets_init', 'sabrina_theme_widgets_init' );
 function sabrina_theme_scripts() {
 	wp_enqueue_style( 'sabrina-theme-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'sabrina-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'sabrina-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
-	wp_enqueue_script( 'sabrina-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'sabrina-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -288,3 +283,58 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+
+
+ 
+	function widgets_init() {
+		//these allow the sidebar to exist
+		register_sidebar( array('name' => __( 'Footer Sidebar', 'sabrina-theme' ),'id' => 'sidebar-1','before_widget' => '<aside id="%1$s" class="widget %2$s">','after_widget' => "</aside>",'before_title' => '<div class="widget-title">','after_title' => '</div>',) );
+		register_sidebar( array('name' => __( 'Side Sidebar', 'sabrina-theme' ),'id' => 'sidebar-2','before_widget' => '<aside id="%1$s" class="widget %2$s">','after_widget' => "</aside>",'before_title' => '<div class="widget-title">','after_title' => '</div>',) );
+	}
+	add_action( 'widgets_init', 'widgets_init' );
+	
+	function cd_custom_gravatar ($avatar_defaults) {
+		$myavatar = get_stylesheet_directory_uri() . '/imgs/luna.png';
+		$avatar_defaults[$myavatar] = __( 'Custom Gravatar', 'YOUR TEXT DOMAIN' );
+		return $avatar_defaults;
+		// this provides my custom gravatar icon in the discussion options page 
+	}
+
+
+	//this function limits the number of words displayed on the home page for posts
+	function custom_excerpt_length( $length ) {
+		return 20;
+	}
+
+	add_filter( 'excerpt_length', 'custom_excerpt_length',999 );
+	/*this places a message and link after every post */ 
+	
+	function call_out($content){
+		$content .= 'Check out Sabrina Smai on <a
+href="https://www.linkedin.com//">https://www.linkedin.com/!</a>';
+		return $content;
+	}
+
+	add_filter( 'the_content', 'call_out');
+	//this function dictates the text of the excerpt 'read more' section 
+	function new_excerpt_more( $more ) {
+		return ' <a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Open your mind...', 'your-text-domain' ) . '</a>';
+	}
+
+	add_filter( 'excerpt_more', 'new_excerpt_more' );
+	// This theme uses wp_nav_menu() in two locations.  
+	register_nav_menus( array(    'primary' => __( 'Primary Navigation', 'fluffy-master' ),    'secondary' => __('Secondary Navigation', 'fluffy-master')  ) );
+	//this function loads the google fonts through enqueueing
+	
+	function load_fonts() {
+		wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=Oswald|Comfortaa');
+		wp_enqueue_style( 'googleFonts');
+	}
+
+	add_action('wp_print_styles', 'load_fonts');
+	add_theme_support( 'post-thumbnails' );
+	/* This gives the theme support for thumbnails*/
+	set_post_thumbnail_size( 250, 250);
+	/* This dictates the size of the posted thumbnails, regardless of the settings made in the dashboard*/
