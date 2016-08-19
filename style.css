@@ -203,7 +203,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 }
 
 
- 
+
 
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, time, mark, audio, video{
@@ -300,7 +300,7 @@ a:active {
 }
 
 
-
+/*Added by Saad*/
 .gridleft
 {
 	float: left; 
@@ -392,14 +392,14 @@ article.post-box[id*="post-"] {
 }
 #masthead {
 	width: 100%; 
-	background-color: #FF4500;
+	background-color: #F7941E;
 	border-radius: 20%; 
 }
 
 #sidebar-side {
 	background: #352f1b;
 	padding-top: 1em;
-	border-top: 1.8em solid #FF4500;
+	border-top: 1.8em solid #F7941E;
 	
 }
 #sidebar-side .widget {
@@ -417,7 +417,7 @@ article.post-box[id*="post-"] {
 }
 #sidebar-side .widget li,
 #meta.widget aside a {
-	border-top: 1px dotted #FF4500;
+	border-top: 1px dotted #F7941E;
 	margin-bottom: 0;
 	padding: 7px 0;
 }
@@ -434,7 +434,7 @@ article.post-box[id*="post-"] {
 	font-size: 0.9em;
 	max-width: 100%; 
 	text-transform: uppercase;
-	color: #FF4500; 
+	color: #F7941E; 
 }
 
 .bottomMenu { 
@@ -629,7 +629,7 @@ p{
 	}
 }
 
-
+/* ----------- iPhone 4 and 4S ----------- */
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
