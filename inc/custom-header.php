@@ -12,33 +12,35 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package sabrinas-theme
+ * @package sabrina-theme
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses sabrinas_theme_header_style()
+ * @uses sabrina_theme_header_style()
  */
-function sabrinas_theme_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'sabrinas_theme_custom_header_args', array(
+function sabrina_theme_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'sabrina_theme_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'sabrinas_theme_header_style',
+		'wp-head-callback'       => 'sabrina_theme_header_style',
+		'admin-head-callback'    => 'sabrina_theme_admin_header_style',
+		'admin-preview-callback' => 'sabrina_theme_admin_header_image',
 	) ) );
 }
-add_action( 'after_setup_theme', 'sabrinas_theme_custom_header_setup' );
+add_action( 'after_setup_theme', 'sabrina_theme_custom_header_setup' );
 
-if ( ! function_exists( 'sabrinas_theme_header_style' ) ) :
+if ( ! function_exists( 'sabrina_theme_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see sabrinas_theme_custom_header_setup().
+ * @see sabrina_theme_custom_header_setup().
  */
-function sabrinas_theme_header_style() {
+function sabrina_theme_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	/*
@@ -73,4 +75,13 @@ function sabrinas_theme_header_style() {
 	</style>
 	<?php
 }
-endif;
+endif; // sabrina_theme_header_style
+
+if ( ! function_exists( 'sabrina_theme_admin_header_style' ) ) :
+/**
+ * Styles the header image displayed on the Appearance > Header admin panel.
+ *
+ * @see sabrina_theme_custom_header_setup().
+ */
+function sabrina_theme_admin_header_style() {
+?>
