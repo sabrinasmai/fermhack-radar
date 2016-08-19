@@ -296,7 +296,7 @@ require get_template_directory() . '/inc/jetpack.php';
 	add_action( 'widgets_init', 'widgets_init' );
 	
 	function cd_custom_gravatar ($avatar_defaults) {
-		$myavatar = get_stylesheet_directory_uri() . '/imgs/luna.png';
+		$myavatar = get_stylesheet_directory_uri() . '/imgs/me.png';
 		$avatar_defaults[$myavatar] = __( 'Custom Gravatar', 'YOUR TEXT DOMAIN' );
 		return $avatar_defaults;
 		// this provides my custom gravatar icon in the discussion options page 
