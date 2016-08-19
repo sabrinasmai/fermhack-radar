@@ -1,6 +1,6 @@
 <?php
 /**
- * sabrinas-theme functions and definitions.
+ * sabrina-theme functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
@@ -20,7 +20,7 @@ function sabrina_theme_setup() {
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on sabrinas-theme, use a find and replace
-	 * to change 'sabrinas-theme' to the name of your theme in all the template files.
+	 * to change 'sabrina-theme' to the name of your theme in all the template files.
 	 */
 	load_theme_textdomain( 'sabrina-theme', get_template_directory() . '/languages' );
 
