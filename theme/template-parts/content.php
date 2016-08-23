@@ -42,6 +42,7 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php sabrina_theme_entry_footer(); ?>
+		<?php sabrina_theme_entry_footer(); 
+		?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

@@ -1,0 +1,150 @@
+.locations .location
+{
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	display: inline-block;
+	min-width: 230px;
+	margin: 0 20px 25px 0;
+	padding: 25px;
+	overflow: hidden;
+}
+
+/* disable inline-block to prevent the widget from flowing out of its container */
+.singleLocationWidget .locations .location,
+.locationsListWidget .locations .location{
+	display: block;
+}
+
+.locations .location.hasPhoto
+{
+	padding: 170px 20px 25px;
+    position: relative;
+}
+
+.locations .location h3
+{
+	text-transform: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	letter-spacing: normal;
+	line-height: normal;
+	margin: 0 0 10px;
+}
+.locations .location .location-photo
+{
+	background-size: cover;
+    border: 1px solid #DDDDDD;
+    height: 150px;
+    left: 0;
+    margin-bottom: 10px;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.locations .location .location-photo img
+{
+}
+
+.locations .location .address
+{
+    margin-bottom: 15px;
+    padding-left: 1px;
+}
+
+.locations .location .map_link
+{
+	margin-top: 20px;
+}
+
+.locations .location .map_link .divider
+{
+	color: #ccc;
+	margin: 0 2px;
+}
+
+.locations .location .phone-wrapper,
+.locations .location .fax-wrapper,
+.locations .location .info-wrapper
+{
+	margin-bottom: 4px;
+	border-bottom: 1px solid #eee;
+}
+
+.locations .location .phone-wrapper strong,
+.locations .location .fax-wrapper strong
+{
+	display: inline-block;
+	width: 70px;
+}
+
+.locations .location .phone-wrapper .num,
+.locations .location .fax-wrapper .num
+{
+	text-align: right;
+	float: right;
+}
+
+.locations .location .locations_gmap{
+	margin: 10px 0;
+}
+
+.locations .location .info-wrapper ul{
+	padding: 0 0 0 20px;
+}
+
+/* Store Locator */
+.store_locator
+{
+
+}
+.store_locator .input_wrapper
+{
+	padding-bottom: 10px;
+}
+.store_locator .input_wrapper label
+{
+	display: block;
+}
+
+/* Fix to make sure the Google Maps controls don't get messed up.
+ * More info: See http://stackoverflow.com/questions/7471830/google-maps-api-v3-weird-ui-display-glitches-with-screenshot
+ */
+#map-canvas img { max-width: none !important; }
+
+/* Search results */
+.store_locator #map-canvas {
+	margin-bottom: 20px;
+}
+
+.store_locator .search_again {
+	margin-bottom: 10px;
+}
+
+/* Search results - tile style */
+.store_locator.locations .locations_search_results {
+	margin-top: 20px;
+}
+.store_locator.locations .locations_search_results > li {
+	display: inline-block;	
+	list-style-type: none;
+	margin-right: 4%;
+	width: 48%;
+}
+.store_locator.locations .locations_search_results > li:nth-child(even) {
+	margin-right: 0;
+}
+.store_locator.locations .locations_search_results .location {
+	width: 100%;
+}
+.store_locator.locations .locations_search_results .location:last-child {
+	margin-right: 0;
+}
+.store_locator.locations .locations_search_results .location .distance-wrapper {
+	margin-bottom: 20px;
+}
+.store_locator.locations .locations_search_results .location .map_link {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
